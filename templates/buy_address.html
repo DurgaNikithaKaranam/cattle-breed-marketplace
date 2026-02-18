@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Delivery Address</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="form-page">
+
+{% include "navbar.html" %}
+
+<div class="form-container">
+
+<form method="POST" class="styled-form">
+
+<h2>Add Delivery Address</h2>
+
+<label>Pincode *</label>
+<input type="text" name="pincode" required>
+
+<div class="form-row">
+    <div>
+        <label>City *</label>
+        <input type="text" name="city" required>
+    </div>
+
+    <div>
+        <label>State *</label>
+        <input type="text" name="state" required>
+    </div>
+</div>
+
+<label>Flat / House No *</label>
+<input type="text" name="house" required>
+
+<label>Apartment / Area / Village *</label>
+<input type="text" name="area" required>
+
+<label>Full Name *</label>
+<input type="text" name="fullname" required>
+
+<label>Email *</label>
+<input type="email" name="email" required>
+
+<input type="hidden" name="quantity" value="{{ quantity }}">
+
+<label>Address Type *</label>
+<select name="address_type">
+<option>Home</option>
+<option>Farm</option>
+</select>
+
+<button type="submit">Continue</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

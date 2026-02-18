@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<div class="container">
+    <div class="profile-section">
+        <h2>My Orders</h2>
+
+        {% if orders %}
+            {% for o in orders %}
+            <div class="order-card">
+                <p><b>Breed:</b> {{ o.breed }}</p>
+                <p><b>Quantity:</b> {{ o.quantity }}</p>
+                <p><b>Delivery Address:</b></p>
+                <p>{{ o.address }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No orders found.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

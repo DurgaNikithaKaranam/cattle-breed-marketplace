@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cattle Breed Marketing System</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css/"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Cattle Breed Marketing System</h1>
+        <p>Buy • Sell • Recommend • Veterinary Support</p>
+
+        <div class="hero-buttons">
+            <a href="/marketplace" class="hero-btn">Explore Marketplace</a>
+            <a href="/recommend" class="hero-btn secondary">Breed Recommendation</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breed Recommendation</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<h2>Breed Recommendation</h2>
+
+<form method="POST">
+
+    <!-- PURPOSE -->
+    <label>Purpose</label>
+    <select name="purpose" onchange="this.form.submit()" required>
+        <option value="">-- Select Purpose --</option>
+        <option value="Milk" {% if purpose=="Milk" %}selected{% endif %}>Milk Production</option>
+        <option value="Breeding" {% if purpose=="Breeding" %}selected{% endif %}>Breeding</option>
+        <option value="Commercial" {% if purpose=="Commercial" %}selected{% endif %}>Commercial Dairy</option>
+    </select>
+
+    <!-- DAIRY / COMMERCIAL -->
+    {% if purpose == "Milk" or purpose == "Commercial" %}
+        <label>Milk Yield Preference</label>
+        <select name="milk" required>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+
+        <label>Climate</label>
+        <select name="climate" required>
+            <option>Hot</option>
+            <option>Moderate</option>
+        </select>
+    {% endif %}
+
+    <!-- BREEDING -->
+    {% if purpose == "Breeding" %}
+        <label>Disease Resistance Importance</label>
+        <select name="disease" required>
+            <option>High</option>
+            <option>Medium</option>
+        </select>
+
+        <label>Temperament</label>
+        <select name="temperament" required>
+            <option>Calm</option>
+            <option>Active</option>
+        </select>
+    {% endif %}
+
+    {% if purpose %}
+        <button type="submit">Recommend</button>
+    {% endif %}
+
+</form>
+
+{% if result %}
+    <h3>Recommended Breed: {{ result }}</h3>
+{% endif %}
+
+</body>
+</html>

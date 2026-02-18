@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select Quantity</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="form-page">
+
+{% include "navbar.html" %}
+
+<div class="form-container">
+
+<form method="POST" class="styled-form">
+
+<h2>Buy {{ cattle[1] }}</h2>
+
+<label>Available Quantity</label>
+<input type="text" value="{{ cattle[4] }}" readonly>
+
+{% if error %}
+<p style="color:red; font-weight:bold; text-align:center;">{{ error }}</p>
+{% endif %}
+
+<label>Enter Quantity</label>
+<input type="number"
+       name="quantity"
+       min="1"
+       max="{{ cattle[3] }}"
+       required>
+
+<button type="submit">Continue</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

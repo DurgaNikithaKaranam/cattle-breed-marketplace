@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Veterinary Doctors</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<h2 class="page-title">Nearby Veterinary Doctors</h2>
+
+<div class="market-grid">
+    {% for vet in vets %}
+    <div class="market-card">
+
+        <img src="{{ url_for('static', filename=vet.image) }}" alt="Vet Image">
+
+        <h3>{{ vet.doctor_name }}</h3>
+        <p><b>Clinic:</b> {{ vet.clinic_name }}</p>
+        <p><b>Location:</b> {{ vet.location }}</p>
+        <p><b>Phone:</b> {{ vet.phone }}</p>
+
+        <a href="tel:{{ vet.phone }}" class="market-btn">Call Now</a>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

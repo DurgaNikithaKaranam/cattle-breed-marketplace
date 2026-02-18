@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<div class="container form-page">
+
+
+    <!-- USER DETAILS -->
+    <div class="profile-section">
+        <h2>My Profile</h2>
+        <p><strong>Username:</strong> {{ session.username }}</p>
+        <p><strong>Phone:</strong> Not added</p>
+        <p><strong>Address:</strong> Not added</p>
+    </div>
+
+    <!-- SELL BUTTON -->
+    <button class="sell-btn" onclick="toggleSellForm()">➕ Sell Cattle</button>
+
+    <!-- SELL FORM -->
+    <div id="sellForm" style="display:none;">
+
+<div class="center-form">
+
+<h2 style="text-align:center;">Sell Cattle</h2>
+
+<form method="POST"
+action="{{ url_for('add_cattle') }}"
+enctype="multipart/form-data"
+class="styled-form">
+
+    <label>Number of Cattle</label>
+    <input type="number" name="quantity" required>
+
+    <label>Upload Image</label>
+    <input type="file" name="image" required>
+
+    <label>Breed</label>
+    <input type="text" name="breed" required>
+
+    <label>Price (per cattle)</label>
+    <input type="number" name="price" required>
+
+    <label>Age (years)</label>
+    <input type="number" name="age" required>
+
+    <label>Gender</label>
+    <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <label>Pregnant?</label>
+    <select name="is_pregnant" onchange="togglePregnancy(this.value)">
+        <option>No</option>
+        <option>Yes</option>
+    </select>
+
+    <div id="pregnancyBox" style="display:none;">
+        <label>Pregnancy Months</label>
+        <input type="number" name="pregnancy_months">
+    </div>
+
+    <label>Weight (kg)</label>
+    <input type="number" name="weight" required>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+</div>
+</div>
+
+<!-- MY ORDERS --> 
+ <div class="profile-section">
+     <h2>My Orders</h2> 
+     {% if orders %} 
+     {% for o in orders %} 
+     <div class="order-card"> 
+        <p><b>Breed:</b> {{ o.breed }}</p> 
+        <p><b>Quantity:</b> {{ o.quantity }}</p> 
+        <p><b>Delivery Address:</b></p> 
+        <p>{{ o.address }}</p> </div> {% endfor %} {% else %}
+         <p>No orders placed yet.</p> {% endif %} 
+    </div>
+ </div>
+
+<script>
+function toggleSellForm() {
+    const form = document.getElementById("sellForm");
+    form.style.display = (form.style.display === "none") ? "block" : "none";
+}
+
+function togglePregnancy(value) {
+    document.getElementById("pregnancyBox").style.display =
+        (value === "Yes") ? "block" : "none";
+}
+</script>
+
+</body>
+</html>

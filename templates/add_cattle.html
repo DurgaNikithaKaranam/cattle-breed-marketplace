@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+{% include "navbar.html" %}
+
+<form method="POST">
+  <h2>Add Cattle</h2>
+  <input name="breed" placeholder="Breed" required>
+  <input name="age" placeholder="Age" type="number" required>
+  <input name="price" placeholder="Price" type="number" required>
+  <button>Add</button>
+</form>
+
+</body>
+</html>

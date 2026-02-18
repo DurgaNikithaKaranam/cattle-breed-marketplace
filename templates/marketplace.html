@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    {% include "navbar.html" %}
+
+<h2 class="page-title">🐄 Cattle Marketplace</h2>
+
+<div class="market-grid">
+
+{% for item in cattle %}
+<div class="market-card">
+
+    <!-- badge INSIDE card -->
+    {% if item.quantity > 0 %}
+    <span class="stock in">Available</span>
+    {% else %}
+    <span class="stock out">Sold Out</span>
+    {% endif %}
+
+    <div class="market-img">
+        <img src="{{ url_for('static', filename=item.image) }}">
+    </div>
+
+    <div class="market-info">
+        <h3>{{ item.breed }}</h3>
+
+        <div class="info-row">
+            <span>Price</span>
+            <strong>₹{{ item.price }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Available</span>
+            <strong>{{ item.quantity }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Age</span>
+            <strong>{{ item.age }} yrs</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Gender</span>
+            <strong>{{ item.gender }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Weight</span>
+            <strong>{{ item.weight }} kg</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Seller</span>
+            <strong>{{ item.owner }}</strong>
+        </div>
+
+        <a href="/buy/{{ item.id }}">
+            <button class="buy-btn">Buy Now</button>
+        </a>
+
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+
+</body>
+</html>

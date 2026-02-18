@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cattle Breeds</title>
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+{% include "navbar.html" %}
+
+<div class="container">
+    <h2 class="page-title">Indian Cattle Breeds</h2>
+
+    <div class="market-grid">
+
+        <!-- GIR -->
+        <div class="market-card">
+            <img src="/static/images/gir.jpg">
+            <h3>Gir Cow</h3>
+            <p>
+                Gir is a famous Indian dairy breed known for its high milk production and heat tolerance.
+                It has a distinctive convex forehead and long ears. Gir cattle are disease resistant,
+                calm in nature, and suitable for tropical climates, making them ideal for sustainable dairy farming.
+            </p>
+        </div>
+
+        <!-- SAHIWAL -->
+        <div class="market-card">
+            <img src="/static/images/sahiwal.jpg">
+            <h3>Sahiwal Cow</h3>
+            <p>
+                Sahiwal is one of the best indigenous dairy breeds of India, originating from Punjab.
+                It is highly resistant to diseases and heat stress. The breed is known for good fertility,
+                longevity, and consistent milk production, even under poor feeding and management conditions.
+            </p>
+        </div>
+
+        <!-- THARPARKAR -->
+        <div class="market-card">
+            <img src="/static/images/tharparkar.jpg">
+            <h3>Tharparkar Cow</h3>
+            <p>
+                Tharparkar is a dual-purpose breed native to the arid regions of Rajasthan.
+                It is well adapted to harsh climates and low rainfall areas. The breed is valued
+                for both milk production and draught power, making it suitable for rural farming systems.
+            </p>
+        </div>
+
+        <!-- RED SINDHI -->
+        <div class="market-card">
+            <img src="/static/images/red_sindhi.jpg">
+            <h3>Red Sindhi Cow</h3>
+            <p>
+                Red Sindhi cattle are known for their deep red coat and adaptability to hot climates.
+                This breed produces good quality milk and has strong resistance to tropical diseases.
+                Red Sindhi cows are commonly used in crossbreeding programs due to their hardiness and productivity.
+            </p>
+        </div>
+
+        <!-- KANKREJ -->
+        <div class="market-card">
+            <img src="/static/images/kankrej.jpg">
+            <h3>Kankrej Cow</h3>
+            <p>
+                Kankrej is a large and powerful cattle breed native to Gujarat and Rajasthan.
+                It is recognized for its strong build, long horns, and draught ability.
+                The breed also produces good quantities of milk and performs well in hot and dry environments.
+            </p>
+        </div>
+
+        <!-- ONGole -->
+        <div class="market-card">
+            <img src="/static/images/ongole.jpg">
+            <h3>Ongole Cow</h3>
+            <p>
+                Ongole cattle originate from Andhra Pradesh and are famous for their strength and endurance.
+                They are widely used for draught work and milk production. Ongole cows have strong immunity
+                and adaptability, making them suitable for both traditional and commercial farming practices.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

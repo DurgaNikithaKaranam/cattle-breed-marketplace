@@ -19,9 +19,9 @@ cursor = db.cursor(dictionary=True)
 
 # ---------------- ML MODEL ----------------
 model = joblib.load("ml/breed_model.pkl")
-le_purpose = joblib.load("ml/purpose_encoder.pkl")
-le_milk = joblib.load("ml/milk_encoder.pkl")
-le_breed = joblib.load("ml/breed_encoder.pkl")
+encoders = joblib.load("ml/encoders.pkl")
+# le_milk = joblib.load("ml/milk_encoder.pkl")
+# le_breed = joblib.load("ml/breed_encoder.pkl")
 
 # ---------------- HOME ----------------
 @app.route("/")
@@ -82,34 +82,44 @@ def breeds():
     cursor.execute("SELECT * FROM breeds")
     return render_template("breeds.html", breeds=cursor.fetchall())
 
-# ---------------- RECOMMEND ----------------
-@app.route("/recommend", methods=["GET", "POST"])
+@app.route("/recommend", methods=["GET","POST"])
 def recommend():
-    purpose = request.form.get("purpose")
-    result = None
 
-    if request.method == "POST" and purpose:
-        if purpose in ["Milk", "Commercial"]:
-            milk = request.form.get("milk")
-            climate = request.form.get("climate")
+    result=None
 
-            if milk == "High" and climate == "Hot":
-                result = "Gir or Sahiwal"
-            elif milk == "Medium":
-                result = "Red Sindhi"
-            else:
-                result = "Tharparkar"
+    if request.method=="POST":
 
-        elif purpose == "Breeding":
-            disease = request.form.get("disease")
-            temperament = request.form.get("temperament")
+        purpose=request.form.get("purpose")
 
-            if disease == "High" and temperament == "Calm":
-                result = "Ongole"
-            else:
-                result = "Kankrej"
+        if purpose=="Dairy":
+            f1=request.form.get("milk")
+            f2=request.form.get("climate")
 
-    return render_template("recommend.html", purpose=purpose, result=result)
+        elif purpose=="Breeding":
+            f1=request.form.get("disease")
+            f2=request.form.get("climate")
+
+        elif purpose=="Draught":
+            f1=request.form.get("strength")
+            f2=request.form.get("terrain")
+
+        else:
+            f1=f2=None
+
+        print("VALUES:",purpose,f1,f2)
+
+        if purpose and f1 and f2:
+
+            input_data=[
+                encoders["purpose"].transform([purpose])[0],
+                encoders["feature1"].transform([f1])[0],
+                encoders["feature2"].transform([f2])[0]
+            ]
+
+            pred=model.predict([input_data])[0]
+            result=encoders["breed"].inverse_transform([pred])[0]
+
+    return render_template("recommend.html", result=result)
 
 @app.route("/add_cattle", methods=["GET", "POST"])
 def add_cattle():

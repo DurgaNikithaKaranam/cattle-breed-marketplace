@@ -1,27 +1,26 @@
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestClassifier
 import joblib
+import os
 
-data = pd.read_csv("breed_dataset.csv")
+path = os.path.dirname(__file__)
+data = pd.read_csv(os.path.join(path,"breed_dataset.csv"))
 
-le_purpose = LabelEncoder()
-le_milk = LabelEncoder()
-le_breed = LabelEncoder()
+encoders = {}
 
-data["purpose"] = le_purpose.fit_transform(data["purpose"])
-data["milk_yield"] = le_milk.fit_transform(data["milk_yield"])
-data["breed"] = le_breed.fit_transform(data["breed"])
+for col in data.columns:
+    le = LabelEncoder()
+    data[col] = le.fit_transform(data[col])
+    encoders[col] = le
 
-X = data[["purpose", "milk_yield"]]
+X = data.drop("breed",axis=1)
 y = data["breed"]
 
-model = DecisionTreeClassifier()
-model.fit(X, y)
+model = RandomForestClassifier(n_estimators=200,random_state=42)
+model.fit(X,y)
 
-joblib.dump(model, "breed_model.pkl")
-joblib.dump(le_purpose, "purpose_encoder.pkl")
-joblib.dump(le_milk, "milk_encoder.pkl")
-joblib.dump(le_breed, "breed_encoder.pkl")
+joblib.dump(model, os.path.join(path,"breed_model.pkl"))
+joblib.dump(encoders, os.path.join(path,"encoders.pkl"))
 
-print("Model trained successfully")
+print("MODEL TRAINED SUCCESSFULLY")

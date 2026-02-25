@@ -1,32 +1,31 @@
-breed_name,gender,is_pregnant,milk_yield_lpd,purpose,climate,region,disease_resistance,temperament,maintenance_level,lactation_stage
-Gir,Female,No,14,Dairy,Hot,Gujarat,High,Calm,Medium,Mid
-Gir,Female,Yes,12,Dairy,Hot,Gujarat,High,Calm,Medium,Early
-Gir,Male,No,0,Draught,Hot,Gujarat,High,Active,Medium,None
-
-Sahiwal,Female,No,15,Dairy,Hot,Punjab,High,Calm,Low,Mid
-Sahiwal,Female,Yes,13,Dairy,Hot,Punjab,High,Calm,Low,Early
-Sahiwal,Male,No,0,Draught,Hot,Punjab,High,Active,Low,None
-
-Tharparkar,Female,No,10,Dual,Arid,Rajasthan,Medium,Calm,Low,Mid
-Tharparkar,Female,Yes,8,Dual,Arid,Rajasthan,Medium,Calm,Low,Early
-Tharparkar,Male,No,0,Draught,Arid,Rajasthan,Medium,Active,Low,None
-
-Red Sindhi,Female,No,12,Dairy,Hot,Sindh,High,Calm,Low,Mid
-Red Sindhi,Female,Yes,10,Dairy,Hot,Sindh,High,Calm,Low,Early
-Red Sindhi,Male,No,0,Draught,Hot,Sindh,High,Active,Low,None
-
-Kankrej,Female,No,11,Dual,Hot,Gujarat,Medium,Calm,Medium,Mid
-Kankrej,Female,Yes,9,Dual,Hot,Gujarat,Medium,Calm,Medium,Early
-Kankrej,Male,No,0,Draught,Hot,Gujarat,Medium,Strong,Medium,None
-
-Ongole,Female,No,9,Dual,Hot,Andhra Pradesh,High,Calm,Low,Mid
-Ongole,Female,Yes,7,Dual,Hot,Andhra Pradesh,High,Calm,Low,Early
-Ongole,Male,No,0,Draught,Hot,Andhra Pradesh,High,Strong,Low,None
-
-Hariana,Female,No,8,Dual,Moderate,Haryana,Medium,Calm,Low,Mid
-Hariana,Female,Yes,6,Dual,Moderate,Haryana,Medium,Calm,Low,Early
-Hariana,Male,No,0,Draught,Moderate,Haryana,Medium,Active,Low,None
-
-Deoni,Female,No,9,Dairy,Hot,Maharashtra,Medium,Calm,Medium,Mid
-Deoni,Female,Yes,7,Dairy,Hot,Maharashtra,Medium,Calm,Medium,Early
-Deoni,Male,No,0,Draught,Hot,Maharashtra,Medium,Strong,Medium,None
+purpose,feature1,feature2,breed
+Dairy,High,Hot,Gir
+Dairy,High,Hot,Sahiwal
+Dairy,High,Hot,Red Sindhi
+Dairy,High,Moderate,Jersey
+Dairy,High,Moderate,Holstein Friesian
+Dairy,Medium,Hot,Sahiwal
+Dairy,Medium,Hot,Red Sindhi
+Dairy,Medium,Moderate,Jersey
+Dairy,Medium,Moderate,HF Cross
+Dairy,Low,Hot,Deoni
+Dairy,Low,Moderate,Red Sindhi
+Breeding,High,Hot,Ongole
+Breeding,High,Hot,Kangayam
+Breeding,High,Moderate,Kankrej
+Breeding,High,Moderate,Tharparkar
+Breeding,Medium,Hot,Ongole
+Breeding,Medium,Hot,Kankrej
+Breeding,Medium,Moderate,Hariana
+Breeding,Medium,Moderate,Tharparkar
+Breeding,High,Hot,Ongole
+Draught,High,Plain,Hallikar
+Draught,High,Hilly,Kangayam
+Draught,High,Plain,Amritmahal
+Draught,High,Hilly,Khillar
+Draught,Medium,Plain,Hallikar
+Draught,Medium,Hilly,Kangayam
+Draught,Medium,Plain,Amritmahal
+Draught,Medium,Hilly,Khillar
+Draught,High,Plain,Kangayam
+Draught,High,Hilly,Hallikar

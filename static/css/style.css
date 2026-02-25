@@ -913,3 +913,8 @@ div span {
         flex-direction:column;
     }
 }
+
+.result-card{
+    background:#e8f5e9;
+    border-left:6px solid #2e7d32;
+}
